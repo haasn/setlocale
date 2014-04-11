@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE ForeignFunctionInterface, DeriveDataTypeable #-}
 
 module System.Locale.SetLocale (
     Category(..),
@@ -21,10 +21,7 @@ data Category
     | LC_MONETARY
     | LC_NUMERIC
     | LC_TIME
-    deriving (Eq, Ord, Read, Show, Enum, Bounded)
-
-instance Typeable Category where
-    typeOf _ = mkTyConApp (mkTyCon "System.Locale.SetLocale.Category") []
+    deriving (Eq, Ord, Read, Show, Enum, Bounded, Typeable)
 
 #include <locale.h>
 
